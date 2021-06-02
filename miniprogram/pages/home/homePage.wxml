@@ -1,0 +1,19 @@
+
+<view class="home-page">
+  <view class="record">
+      <text class="tab-text">血糖记录</text>
+  </view>
+
+  <view class="cal">
+      <text class="tab-text">胰岛素计算</text>
+  </view>
+
+  <view class="food">
+      <text class="tab-text">饮食</text>
+  </view>
+
+  <view class="discuss">
+      <text class="tab-text">论坛</text>
+  </view>
+  
+</view>
