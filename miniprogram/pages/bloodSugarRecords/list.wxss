@@ -1,0 +1,21 @@
+/* pages/bloodSugarRecords/list.wxss */
+
+.record-date {
+  border: 1px solid #129e251a;
+  text-align: left;
+  color: rgb(35, 141, 230);
+  font-size: large;
+}
+
+.record-item {
+  margin-top: 10rpx;
+  height: 60rpx;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  display: block;
+  flex-direction: row;
+  align-items: left;
+  transition: all 300ms ease;
+}

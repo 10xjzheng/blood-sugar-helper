@@ -1,0 +1,10 @@
+<view wx:for="{{records}}">
+  <view class='record-date'>
+    <view style="margin-left:10px">{{item.date}}</view>
+  </view>
+  <view wx:for="{{item.items}}" class="record-item">
+        <view style="display: block; float: left; margin-left:10px">{{item.datetime}}</view>
+        <text space="ensp"> 测量值：</text>
+        <view style="display: block; float: right;margin-right:10px">{{item.value}} mmol/L</view>
+    </view>
+</view>

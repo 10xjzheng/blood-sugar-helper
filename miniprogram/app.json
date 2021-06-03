@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/home/homePage",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/bloodSugarRecords/list",
+    "pages/bloodSugarRecords/add"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
