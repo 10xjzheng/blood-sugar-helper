@@ -1,1 +1,48 @@
 /* pages/bloodSugarRecords/add.wxss */
+page {
+   background: white;
+}
+.record-option {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.record-text{
+  margin: 10px;
+  font-weight: 120;
+}
+.time-item {
+  float: left;
+  padding: 10px;
+}
+.show-date-time-box {
+  border: 2px solid darkseagreen;
+  height: 30px;
+  width: 62%;
+  float: right;
+  margin-right: 20px;
+}
+.time-picker {
+  margin-top: 10px;
+}
+.record-item {
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 40px;
+  width: 100%;
+  float: left;
+}
+.record-input{
+    float: right;
+    border: 2px solid darkseagreen;
+    height: 30px;
+    width: 46%;
+}
+.section {
+  margin: 10px;
+  border: 2px solid darkseagreen;
+  height: 80px;
+}
+.record-submit {
+  margin-top: 10px;
+}

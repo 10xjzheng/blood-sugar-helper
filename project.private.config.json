@@ -19,8 +19,8 @@
           "query": ""
         },
         {
-          "name": "pages/bloodSugarRecords/list",
-          "pathName": "pages/bloodSugarRecords/list",
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
           "query": "",
           "scene": null
         }

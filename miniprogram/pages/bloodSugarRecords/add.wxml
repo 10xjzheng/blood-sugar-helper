@@ -1,2 +1,42 @@
 <!--pages/bloodSugarRecords/add.wxml-->
-<text>pages/bloodSugarRecords/add.wxml</text>
+<view class="record-option">
+<view class="record-text">时间段</view>
+<radio-group bindchange="radioChange">
+  <label class="time-text" wx:for="{{items}}" wx:key="value">
+    <view class="time-item">
+      <text>{{item.name}} </text>
+      <radio value="{{item.value}}" checked="{{item.checked}}"/>
+    </view>
+  </label>
+</radio-group>
+</view>
+
+<view class="record-option">
+<view class="record-text"><text>血糖记录</text></view> 
+<view class="record-item">
+  <date-time-picker
+   mode="dateminute" 
+   value="{{dateMinute}}"
+   bindchange="selectDateMinuteChange"> 
+  <text>测量时间：</text>
+  <view class="show-date-time-box">{{dateMinute}}</view>
+</date-time-picker>
+</view>
+
+<view class="record-item">
+<view style="float:left" >血糖值：</view>
+<text style="float:right;margin-right:20px">mmol/L</text> 
+<input class="record-input" bindinput='recordValueInput'/>
+</view>
+</view>
+
+<view class="record-option">
+  <view class="record-text"><text>备注</text></view> 
+  <view class="section">
+  <textarea bindinput='remarkInput' auto-height placeholder="备注信息" />
+  </view>
+</view>
+<view class="record-submit">
+    <button type="primary" bindtap="bindFormSubmit"> 保存 </button>
+</view>
+

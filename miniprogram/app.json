@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/homePage",
     "pages/mine/mine",
     "pages/bloodSugarRecords/list",
     "pages/bloodSugarRecords/add"
@@ -20,7 +19,7 @@
     "list": [{
       "selectedIconPath": "images/home.png",
       "iconPath": "images/home.png",
-      "pagePath": "pages/home/homePage",
+      "pagePath": "pages/index/index",
       "text": "首页"
     },{
       "selectedIconPath": "images/mine.png",
