@@ -1,35 +1,22 @@
-<!--index.wxml-->
 <view class="container">
-
-<!-- 用户 openid -->
-<view class="userinfo">
-  <block wx:if="{{canIUseOpenData}}" class="userinfo-opendata">
-    <view class="userinfo-block-avatar" bindtap="bindViewTap">
-      <open-data type="userAvatarUrl"></open-data>
-    </view>
-  </block>
-  <block wx:elif="{{!hasUserInfo}}">
-    <button 
-      wx:if="{{canIUseGetUserProfile}}" 
-      bindtap="getUserProfile"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
-    <button
-      wx:else
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
-  </block>
-  <block wx:else>
-    <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
-  </block>
-  <view class="userinfo-nickname-wrapper">
-    <button class="userinfo-nickname" bindtap="onGetOpenid">{{res.userInfo.nickname}}</button>
+  <view class="userinfo">
+    <block wx:if="{{hasLogin}}">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+    <block wx:else>
+      <image open-type="getUserInfo" bindtap="getUserProfile" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text open-type="getUserInfo" bindtap="getUserProfile" class="userinfo-nickname">点击授权登录</text>    
+    </block>
   </view>
-</view>
+  <navigator url="/pages/bloodSugarRecords/list"  class="mine-tab" >
+    <icon class="icon-box-img" type="success" size="26"></icon>
+    <text class="mine-tab-text">我的血糖记录</text>
+    <image class="mine-tab-img" src="../../images/row.png"/>
+  </navigator>
+  <navigator class="mine-tab">
+    <icon class="icon-box-img" type="success" size="26"></icon>
+    <text class="mine-tab-text">设置</text>
+    <image class="mine-tab-img" src="../../images/row.png"/>
+  </navigator>
 </view>

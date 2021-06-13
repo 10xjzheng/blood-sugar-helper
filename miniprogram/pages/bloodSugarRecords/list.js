@@ -1,17 +1,13 @@
-// pages/bloodSugarRecords/list.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    records: [
-      {date:"2021-4-12", items:[{datetime:"2007-12-01 12:00:00",value:12},{datetime:"2008-12-01 12:00:00",value:9},{datetime:"2007-12-01 12:00:00",value:12},{datetime:"2008-12-01 12:00:00",value:9}]},
-      {date:"2021-5-12", items:[{datetime:"2008-12-01 12:00:00",value:9},{datetime:"2008-12-01 12:00:00",value:9},{datetime:"2007-12-01 12:00:00",value:12},{datetime:"2008-12-01 12:00:00",value:9},{datetime:"2007-12-01 12:00:00",value:12},{datetime:"2008-12-01 12:00:00",value:9}]},
-      {date:"2021-6-12", items:[{datetime:"2009-12-01 12:00:00",value:6},{datetime:"2008-12-01 12:00:00",value:9},{datetime:"2007-12-01 12:00:00",value:12},{datetime:"2008-12-01 12:00:00",value:9},{datetime:"2007-12-01 12:00:00",value:12},{datetime:"2008-12-01 12:00:00",value:9}]}
-    ]
+    records: [],
+    length: false
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,14 +19,49 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+      console.log(this.data)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(!getApp().globalData.openid) {
+        wx.switchTab({
+          url: '/pages/mine/mine',
+        })
+    } else {
+      const db = wx.cloud.database()
+      const MAX_LIMIT = 100
+      db.collection('bs_measure_record').where({_openid:app.globalData.openid}).count()
+      .then(res => {
+          const batchTimes = Math.ceil(res.total / 100)
+          var records = [];
+          for (let i = 0; i < batchTimes; i++) {
+            db.collection('bs_measure_record').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get().then(res => {
+               records =  records.concat(res.data)
+               if(i == batchTimes-1) {
+                   var recordMap = {}
+                    records.forEach(element => {
+                        if(!recordMap[element.date]) {
+                          recordMap[element.date] = []
+                        }
+                        recordMap[element.date].push(element)
+                    });
+                    var allItems = []
+                    for (var key in recordMap) {
+                      allItems.push({date:key, items:recordMap[key]})
+                    }
+                    console.log(allItems)
+                    this.setData({
+                      records: allItems,
+                      length: allItems.length > 0
+                    })
+               }
+            })
+          }
+      });
+    }
   },
 
   /**
@@ -67,9 +98,4 @@ Page({
   onShareAppMessage: function () {
 
   },
-  addRecord: function () {
-    wx.navigateTo({
-      url: 'add',
-    })
-  }
 })

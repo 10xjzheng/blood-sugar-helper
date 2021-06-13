@@ -45,6 +45,27 @@ Page({
   },
   bindFormSubmit:function() {
       console.log(this.data.dateMinute,this.data.recordValue, this.data.timePeriod,this.data.remark)
+      const db = wx.cloud.database()
+      db.collection('bs_measure_record').add({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          date_minute: this.data.dateMinute,
+          record_value: this.data.recordValue,
+          time_period: this.data.timePeriod,
+          remark: this.data.remark,
+          date: this.data.dateMinute.slice(0,10),
+          created_at:new Date()
+        }
+      }).then(res => {
+        wx.showToast({
+          title: '操作成功',
+          icon: 'success',
+          duration: 2000
+        });
+        wx.navigateTo({
+          url: 'list',
+        })
+      })
   },
   /**
    * 年月日时分选择类型的回调函数，可以在该函数得到选择的时间

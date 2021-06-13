@@ -1,18 +1,19 @@
-<view>
-<view wx:for="{{records}}" wx:key="records">
-<view class='record-date'>
-  <view style="margin-left:10px">{{item.date}}</view>
-</view>
-<view wx:for="{{item.items}}" class="record-item" wx:key="items">
-      <view style="display: block; float: left; margin-left:10px">{{item.datetime}}</view>
-      <text space="ensp"> 测量值：</text>
-      <view style="display: block; float: right;margin-right:10px">{{item.value}} mmol/L</view>
+<block wx:if="{{length > 0 ? true : false}}">
+  <view wx:for="{{records}}" wx:key="records">
+      <view class='record-date'>
+        <view style="margin-left:10px">{{item.date}}</view>
+      </view>
+      <view wx:for="{{item.items}}" class="record-item" wx:key="items">
+            <view style="display: block; float: left; margin-left:10px">{{item.date_minute}}</view>
+            <text space="ensp"> 测量值：</text>
+            <view style="display: block; float: right;margin-right:10px">{{item.record_value}} mmol/L</view>
+        </view>
   </view>
-</view>
-<view>
-<button class="kf_button" bindtap='addRecord'>
-    <image class="kf_image" src="../../images/add.png"></image>
-</button>
-</view>
-</view>
+</block>
+<block wx:else>
+  <text class="tips">暂无数据</text>
+</block>
+<navigator url="add">
+  <image class="kf_image" src="../../images/add.png"></image>
+</navigator>
 

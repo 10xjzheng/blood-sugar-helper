@@ -1,6 +1,7 @@
 /* pages/bloodSugarRecords/list.wxss */
 page {
   background: white;
+  display: flex;
 }
 .record-date {
   border: 1px solid #129e251a;
@@ -16,25 +17,25 @@ page {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-left: none;
   border-right: none;
-  display: block;
+  display: flex;
   flex-direction: row;
   align-items: left;
   transition: all 300ms ease;
 }
 
-.kf_button{
-  background-color: rgba(255, 255, 255, 0);
-  border: 0px;
-  height: 120rpx;
-  right: -50px;
-  bottom: 50rpx;
-  position: fixed;
-}
-.kf_button::after{
-  border: 0px;
-}
+
 .kf_image{
   z-index: 9999;
   width: 100rpx;
   height: 100rpx;
+  display: block;
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+}
+
+.tips {
+  display: flex;
+  margin-top: 100px;
+  margin-left: 43%;
 }
